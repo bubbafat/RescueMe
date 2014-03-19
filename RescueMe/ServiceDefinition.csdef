@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServiceDefinition name="RescueMe" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-10.2.2">
-  <WebRole name="RescueMe.Web" vmsize="Small">
+  <WebRole name="RescueMe.Web" vmsize="ExtraSmall">
     <Sites>
       <Site name="Web">
         <Bindings>
@@ -13,11 +13,14 @@
     </Endpoints>
     <Imports>
       <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
     </Imports>
   </WebRole>
-  <WorkerRole name="RescueMe.Service" vmsize="Small">
+  <WorkerRole name="RescueMe.Service" vmsize="ExtraSmall">
     <Imports>
       <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
     </Imports>
   </WorkerRole>
 </ServiceDefinition>

@@ -173,3 +173,7 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 
+# we keep secrets in here
+Web.Release.Config
+Web.Debug.Config
+Secrets.cs
