@@ -42,7 +42,7 @@ namespace RescueMe.Commands
             string command;
             string content;
 
-            if (split != null || split.Length == 0)
+            if (split == null || split.Length == 0)
             {
                 sms = null;
                 return false;

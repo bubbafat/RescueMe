@@ -12,5 +12,7 @@ namespace RescueMe.Data
         IQueryable<Rescue> Rescues { get; }
 
         void CancelAccount(string phoneNumer);
+
+        void Register(string phoneNumber);
     }
 }

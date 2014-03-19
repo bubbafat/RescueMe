@@ -12,7 +12,7 @@
     <AssemblyName>RescueMe</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
     <Name>RescueMe</Name>
-    <PackageEnableRemoteDebugger>False</PackageEnableRemoteDebugger>
+    <PackageEnableRemoteDebugger>True</PackageEnableRemoteDebugger>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -44,7 +44,7 @@
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>RescueMe.Service</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+      <UpdateDiagnosticsConnectionStringOnPublish>False</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
     <ProjectReference Include="..\RescueMe.Web\RescueMe.Web.csproj">
       <Name>RescueMe.Web</Name>
@@ -52,7 +52,7 @@
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <RoleName>RescueMe.Web</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+      <UpdateDiagnosticsConnectionStringOnPublish>False</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -69,7 +69,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\rescuemeProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\stagingRelease.azurePubxml" />
+    <PublishProfile Include="Profiles\productionDebug.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

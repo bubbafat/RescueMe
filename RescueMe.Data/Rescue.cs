@@ -15,8 +15,10 @@ namespace RescueMe.Data
 
         public DateTimeOffset When { get; set; }
 
+        [StringLength(50)]
         public string Type { get; set; }
 
+        [StringLength(1024)]
         public string Content { get; set; }
     }
 }

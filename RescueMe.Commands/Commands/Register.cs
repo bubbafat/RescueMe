@@ -31,6 +31,8 @@ namespace RescueMe.Commands.Commands
                 }
                 else
                 {
+                    store.Register(message.From);
+
                     // the user is already registered
                     reply.Content = "You are now registered!  Text 'help' to get started";
                 }

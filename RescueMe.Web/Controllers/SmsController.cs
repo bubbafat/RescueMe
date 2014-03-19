@@ -10,7 +10,7 @@ namespace RescueMe.Web.Controllers
     {
 
         [HttpPost]
-        [ValidateRequest(RescueMe.Twilio.Config.AuthKey)]
+        //[ValidateRequest(RescueMe.Twilio.Config.AuthKey)]
         public ActionResult Index(SmsRequest request)
         {
             CommandProcessor p = new CommandProcessor();
