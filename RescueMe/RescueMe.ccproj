@@ -46,22 +46,26 @@
       <RoleName>RescueMe.Service</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>False</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
-    <ProjectReference Include="..\RescueMe.Web\RescueMe.Web.csproj">
-      <Name>RescueMe.Web</Name>
-      <Project>{3b119d9a-e435-4c91-9f49-a76fdc07cd39}</Project>
+    <ProjectReference Include="..\RescueMe.WebApi\RescueMe.WebApi.csproj">
+      <Name>RescueMe.WebApi</Name>
+      <Project>{3b1e7082-85b6-415a-a3c3-62b565f19e41}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
-      <RoleName>RescueMe.Web</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>False</UpdateDiagnosticsConnectionStringOnPublish>
+      <RoleName>RescueMe.WebApi</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Profiles" />
     <Folder Include="RescueMe.ServiceContent\" />
+    <Folder Include="RescueMe.WebApiContent\" />
     <Folder Include="RescueMe.WebContent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="RescueMe.ServiceContent\diagnostics.wadcfg">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="RescueMe.WebApiContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
     <Content Include="RescueMe.WebContent\diagnostics.wadcfg">
