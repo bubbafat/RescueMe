@@ -57,9 +57,12 @@ namespace RescueMe.Domain
             try
             {
                 var message = Queue.Receive(TimeSpan.FromHours(1));
-                var sms = message.GetBody<OutboundSmsMessage>();
-                callback(sms);
-                message.Complete();
+                if (message != null)
+                {
+                    var sms = message.GetBody<OutboundSmsMessage>();
+                    callback(sms);
+                    message.Complete();
+                }
             }
             catch (TimeoutException)
             {
