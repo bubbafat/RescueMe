@@ -1,18 +1,15 @@
 namespace RescueMe.Data.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<RescueMe.Data.RescueMeDb>
+    internal sealed class Configuration : DbMigrationsConfiguration<RescueMeDb>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(RescueMe.Data.RescueMeDb context)
+        protected override void Seed(RescueMeDb context)
         {
             //  This method will be called after migrating to the latest version.
 

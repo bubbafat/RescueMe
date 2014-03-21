@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RescueMe.Domain
 {
@@ -14,6 +12,7 @@ namespace RescueMe.Domain
             new Help(),
             new Quit(),
             new Register(),
+            new In(),
         };
 
         public static string Execute(string from, string message)
@@ -39,12 +38,12 @@ namespace RescueMe.Domain
         }
         private static bool TryCrackMessage(string from, string message, out IncomingSmsMessage sms)
         {
-            string[] split = message.Trim().Split(new char[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
+            string[] split = message.Trim().Split(new [] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
 
             string command;
             string content;
 
-            if (split == null || split.Length == 0)
+            if (split.Length == 0)
             {
                 sms = null;
                 return false;

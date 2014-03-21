@@ -1,9 +1,4 @@
 ﻿using RescueMe.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using Twilio.TwiML;
 using Twilio.TwiML.WebApi;
@@ -19,7 +14,7 @@ namespace RescueMe.WebApi.Controllers
         public IHttpActionResult Post(SmsRequest request)
         {
             TwilioResponse response = new TwilioResponse();
-            response.Sms(CommandProcessor.Execute(request.From, request.Body));
+            response.Message(CommandProcessor.Execute(request.From, request.Body));
             return TwiML(response);
         }
     }

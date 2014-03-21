@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Threading;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.Storage;
+using RescueMe.Domain;
+using System.Net;
+using Twilio;
 
 namespace RescueMe.Service
 {
@@ -15,13 +9,11 @@ namespace RescueMe.Service
     {
         public override void Run()
         {
-            // This is a sample worker implementation. Replace with your logic.
-            Trace.TraceInformation("RescueMe.Service entry point called", "Information");
+            TwilioRestClient twilio = new TwilioRestClient(Twilio.Config.AccountSid, Twilio.Config.AuthKey);
 
             while (true)
             {
-                Thread.Sleep(10000);
-                Trace.TraceInformation("Working", "Information");
+                OutboundSmsMessageQueue.ProcessNext(sms => twilio.SendSmsMessage(sms.From, sms.To, sms.Body));
             }
         }
 
