@@ -27,7 +27,7 @@ namespace RescueMe.Domain
 
                         if (!namespaceManager.QueueExists(SmsQueueName))
                         {
-                            namespaceManager.CreateQueue(SmsQueueName);
+                            var desc = namespaceManager.CreateQueue(SmsQueueName);
                         }
 
                         _queue = QueueClient.CreateFromConnectionString(conn, SmsQueueName, ReceiveMode.PeekLock);
@@ -47,8 +47,11 @@ namespace RescueMe.Domain
 
         public static void Add(OutboundSmsMessage message)
         {
-            BrokeredMessage queueMsg = new BrokeredMessage(message);
-            queueMsg.ScheduledEnqueueTimeUtc = message.ScheduledTime.UtcDateTime;
+            BrokeredMessage queueMsg = new BrokeredMessage(message)
+            {
+                ScheduledEnqueueTimeUtc = message.ScheduledTime.UtcDateTime
+            };
+
             Queue.Send(queueMsg);
         }
 
@@ -56,18 +59,27 @@ namespace RescueMe.Domain
         {
             try
             {
+                // Wait an hour for the message.
+                // Why an hour?  Totally arbitrary.
                 var message = Queue.Receive(TimeSpan.FromHours(1));
                 if (message != null)
                 {
                     var sms = message.GetBody<OutboundSmsMessage>();
-                    callback(sms);
-                    message.Complete();
+                    try
+                    {
+                        callback(sms);
+                        message.Complete();
+                    }
+                    catch(Exception ex)
+                    {
+                        message.DeadLetter("Exception", ex.Message);
+                        throw;
+                    }
                 }
             }
             catch (TimeoutException)
             {
-                // the Receive timeout passed
-                // just eat it and return
+                // Receive might throw on timeout
             }
         }
     }

@@ -73,6 +73,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <PublishProfile Include="Profiles\productionRelease.azurePubxml" />
     <PublishProfile Include="Profiles\stagingRelease.azurePubxml" />
     <PublishProfile Include="Profiles\productionDebug.azurePubxml" />
   </ItemGroup>

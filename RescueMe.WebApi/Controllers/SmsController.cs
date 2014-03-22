@@ -10,12 +10,16 @@ namespace RescueMe.WebApi.Controllers
     {
         [HttpPost]
         [Route("sms")]
-        [ValidateRequest(RescueMe.Twilio.Config.AuthKey)]
+        [ValidateRequest(Twilio.Config.AuthKey)]
         public IHttpActionResult Post(SmsRequest request)
         {
-            TwilioResponse response = new TwilioResponse();
-            response.Message(CommandProcessor.Execute(request.From, request.Body));
-            return TwiML(response);
+            string response = CommandProcessor.Execute(request.From, request.Body);
+
+            TwilioResponse twililResponse = new TwilioResponse();
+
+            twililResponse.Message(response);
+            
+            return TwiML(twililResponse);
         }
     }
 }

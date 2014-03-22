@@ -9,11 +9,15 @@ namespace RescueMe.Service
     {
         public override void Run()
         {
-            TwilioRestClient twilio = new TwilioRestClient(Twilio.Config.AccountSid, Twilio.Config.AuthKey);
+            TwilioRestClient twilio = new TwilioRestClient(
+                Twilio.Config.AccountSid, 
+                Twilio.Config.AuthKey);
 
             while (true)
             {
-                OutboundSmsMessageQueue.ProcessNext(sms => twilio.SendSmsMessage(sms.From, sms.To, sms.Body));
+                OutboundSmsMessageQueue.ProcessNext(sms => 
+                    twilio.SendSmsMessage(sms.From, sms.To, sms.Body)
+                );
             }
         }
 
