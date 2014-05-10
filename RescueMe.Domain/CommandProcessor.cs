@@ -10,8 +10,6 @@ namespace RescueMe.Domain
         readonly static List<ICommand> Commands = new List<ICommand>
         {
             new Help(),
-            new Quit(),
-            new Register(),
             new In(),
         };
 

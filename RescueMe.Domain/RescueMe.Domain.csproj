@@ -57,18 +57,10 @@
     <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\IncomingSmsMessage.cs" />
-    <Compile Include="Commands\Quit.cs" />
-    <Compile Include="Commands\Register.cs" />
     <Compile Include="OutboundSmsMessage.cs" />
     <Compile Include="OutboundSmsMessageQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Secrets.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RescueMe.Data\RescueMe.Data.csproj">
-      <Project>{0c47ab28-18dd-43e9-bd78-390f0e0db9b6}</Project>
-      <Name>RescueMe.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
