@@ -49,10 +49,8 @@ So ... in a loop process items from the queue.
 
 The web role puts them there when necessary.
 
-Data (SQL and Queue)
+Data (Service Bus Queue)
 ===============
-
-Registration data (whether or not we know about a phone number) is stored in SQL.
 
 Scheduled messages are stored in the queue.  That is how they get from the web role to the worker role.
 
@@ -64,16 +62,6 @@ The Glue
 ======
 
 ##Commands
-
-It would not be a very interesting application if it didn't do anything.  There are several commands.
-
-### Register
-
-Registers a phone with RescueMe
-
-### Quit
-
-Unregisters the phone
 
 ### Help
 
