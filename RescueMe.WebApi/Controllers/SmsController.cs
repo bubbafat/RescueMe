@@ -13,13 +13,13 @@ namespace RescueMe.WebApi.Controllers
         [ValidateRequest(Twilio.Config.AuthKey)]
         public IHttpActionResult Post(SmsRequest request)
         {
-            string response = CommandProcessor.Execute(request.From, request.Body);
+            TwilioResponse response = new TwilioResponse();
 
-            TwilioResponse twililResponse = new TwilioResponse();
+            string message = CommandProcessor.Execute(request.From, request.Body);
 
-            twililResponse.Message(response);
-            
-            return TwiML(twililResponse);
+            response.Message(message);
+
+            return TwiML(response);
         }
     }
 }
